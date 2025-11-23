@@ -4,6 +4,11 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
+/**
+ * Classe EnderecoDto é uma representação dos dados de entrada ou saida de um endereço
+ * @author Waldir Tiago
+ * */
+
 @JsonIgnoreProperties
 public record EnderecoDto(
         long id,

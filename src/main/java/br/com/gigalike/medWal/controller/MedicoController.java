@@ -10,6 +10,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+/**
+ * Classe  MedicoController contem os endpoints CRUD para manipular dados de um medico
+ * @author Waldir Tiago
+ * */
+
 @RestController
 @RequestMapping("/medicos")
 public class MedicoController {

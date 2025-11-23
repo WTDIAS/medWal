@@ -9,6 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+/**
+ * Classe EnderecoController contem os endpoints CRUD para manipular dados de um endereço
+ * @author Waldir Tiago
+ * */
 
 @RestController
 @RequestMapping("/enderecos")

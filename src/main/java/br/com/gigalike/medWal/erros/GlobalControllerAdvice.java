@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * Classe GlobalControllerAdvice faz o tratamento de erros e excessões lançadas
+ * @author Waldir Tiago
+ * */
+
 @RestControllerAdvice
 public class GlobalControllerAdvice {
     @ExceptionHandler(BadRequest.class)

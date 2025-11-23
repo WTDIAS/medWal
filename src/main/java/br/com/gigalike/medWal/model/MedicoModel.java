@@ -3,13 +3,20 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
 
+/**
+ * Classe MedicoModel é uma representação de um objeto médico e da tabela no banco de dados
+ * @author Waldir Tiago
+ * */
+
+
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of="id")
-public class Medico {
+@Table(name = "medico")
+public class MedicoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -21,6 +28,6 @@ public class Medico {
     private Especialidade especialidade;
     private boolean ativo;
 
-    @OneToMany(mappedBy = "medico", cascade = CascadeType.ALL,orphanRemoval = true)
-    private List<Endereco> enderecoList;
+    @OneToMany(mappedBy = "medicoModel", cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<EnderecoModel> enderecoModelList;
 }

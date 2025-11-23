@@ -4,13 +4,19 @@ import br.com.gigalike.medWal.dto.EnderecoDto;
 import jakarta.persistence.*;
 import lombok.*;
 
+/**
+ * Classe EnderecoModel é uma representação de um objeto endereço e da tabela no banco de dados
+ * @author Waldir Tiago
+ * */
+
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Endereco {
+@Table(name = "endereco")
+public class EnderecoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -24,9 +30,9 @@ public class Endereco {
 
     @ManyToOne
     @JoinColumn(name = "medico_id")
-    private Medico medico;
+    private MedicoModel medicoModel;
 
-    public Endereco(EnderecoDto enderecoDto, Medico medico) {
+    public EnderecoModel(EnderecoDto enderecoDto, MedicoModel medicoModel) {
         this.logradouro = enderecoDto.logradouro();
         this.bairro = enderecoDto.bairro();
         this.cep = enderecoDto.cep();
@@ -34,6 +40,6 @@ public class Endereco {
         this.uf = enderecoDto.uf();
         this.complemento = enderecoDto.complemento();
         this.numero = enderecoDto.numero();
-        this.medico = medico;
+        this.medicoModel = medicoModel;
     }
 }

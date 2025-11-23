@@ -6,6 +6,11 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
+/**
+ * Classe MedicoDto é uma representação dos dados de entrada ou saida de um médico
+ * @author Waldir Tiago
+ * */
+
 @JsonIgnoreProperties
 public record MedicoDto(
         long id,
