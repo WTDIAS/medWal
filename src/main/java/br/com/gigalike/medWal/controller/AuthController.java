@@ -1,5 +1,4 @@
 package br.com.gigalike.medWal.controller;
-
 import br.com.gigalike.medWal.dto.TokenResponseDto;
 import br.com.gigalike.medWal.dto.UserDto;
 import br.com.gigalike.medWal.service.AuthService;

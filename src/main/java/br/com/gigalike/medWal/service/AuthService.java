@@ -31,7 +31,6 @@ public class AuthService {
 
     @Transactional
     public ResponseEntity<TokenResponseDto> autenticar(UserDto userDto) {
-
         UserModel userModel = authRepository.findByLogin(userDto.login()).orElseThrow(()->new NotFound("Credenciais inválidas"));
         if (bcrypt.matches(userDto.senha(), userModel.getSenha())){
             String token = jwtUtil.gerarToken(userDto.login());

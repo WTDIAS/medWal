@@ -28,6 +28,12 @@ public class EderecoController {
         return ResponseEntity.created(uri).body(enderecoDtoSalvo);
     }
 
+    @GetMapping
+    public ResponseEntity<Page<EnderecoDto>> listarEderecos(Pageable pageable){
+        var enderecos = enderecoService.listarTodos(pageable);
+        return ResponseEntity.ok(enderecos);
+    }
+
     @GetMapping("/{idMedico}")
     public ResponseEntity<Page<EnderecoDto>> listarEnderecosDoMedico(@PathVariable long idMedico, Pageable pageable){
         var retorno = enderecoService.listar(idMedico,pageable);

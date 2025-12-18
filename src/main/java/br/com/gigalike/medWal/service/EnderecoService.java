@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
  * */
 
 @Service
+@Transactional
 public class EnderecoService {
     @Autowired
     private EnderecoRepository enderecoRepository;
@@ -26,14 +27,12 @@ public class EnderecoService {
     @Autowired
     private EnderecoMapper enderecoMapper;
 
-    @Transactional
     public EnderecoDto salvar(long idMedico, EnderecoDto enderecoDto){
         MedicoModel medicoModel = medicoRepository.findById(idMedico).orElseThrow(()->new NotFound("Médico não encontrado com id: "+idMedico));
         EnderecoModel enderecoModel = new EnderecoModel(enderecoDto, medicoModel);
         return enderecoMapper.toDto(enderecoRepository.save(enderecoModel));
     }
 
-    @Transactional(readOnly=true)
     public Page<EnderecoDto> listar(long idMedico, Pageable pageable){
         MedicoModel medicoModel = medicoRepository.findById(idMedico).orElseThrow(()->new NotFound("Médico não encontrado com id: "+idMedico));
         if (!medicoModel.isAtivo()){
@@ -44,15 +43,19 @@ public class EnderecoService {
 
     }
 
-    @Transactional
     public EnderecoDto atualizar(long idEndereco, EnderecoDto enderecoDto) {
         EnderecoModel enderecoModel = enderecoRepository.findById(idEndereco).orElseThrow(()->new NotFound("EnderecoModel não encontrado para o id: "+idEndereco));
         return enderecoMapper.toDto(enderecoMapper.update(enderecoDto, enderecoModel));
     }
 
-    @Transactional
     public void deletar(long idEndereco) {
         EnderecoModel enderecoModel = enderecoRepository.findById(idEndereco).orElseThrow(()->new NotFound("EnderecoModel não encontrado para o id: "+idEndereco));
         enderecoRepository.deleteById(enderecoModel.getId());
+    }
+
+
+    public Page<EnderecoDto> listarTodos(Pageable pageable) {
+        Page<EnderecoModel> enderecos = enderecoRepository.findAll(pageable);
+        return enderecos.map(enderecoMapper::toDto);
     }
 }
