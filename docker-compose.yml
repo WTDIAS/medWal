@@ -8,7 +8,7 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
     ports:
-      - "${DB_PORT:5432}"
+      - "${DB_PORT}"
     networks:
       - app-net
 
@@ -18,15 +18,15 @@ services:
     env_file:
       - .env
     ports:
-      - "${APP_PORT:8080}"
+      - "${APP_PORT}"
     depends_on:
       - postgres
     networks:
       - app-net
 
-  volumes:
-    pgdata:
+volumes:
+  pgdata:
 
-  networks:
-    app-net:
-      driver: bridge
+networks:
+  app-net:
+    driver: bridge
